@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wake On Lan</title>
+</head>
+
+<body>
+    <h1>Wake on lan</h1>
+    <button id="btn_wol">Press me to wake the PC.</button>
+    <p id="p_result"></p>
+</body>
+
+<script>
+    document.getElementById("btn_wol").addEventListener('click', function () {
+        let requester = new XMLHttpRequest();
+        requester.open('post', '/wake');
+
+        requester.onreadystatechange = function () {
+            document.getElementById("p_result").innerHTML = requester.responseText
+        }
+
+        requester.send();
+    }, false);
+</script>
+
+</html>

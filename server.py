@@ -1,17 +1,17 @@
 import wol
-from flask import Flask
+from flask import Flask,render_template
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello_world():
-    return 'Hello! This is a Wake On Lan Server, powered by Flask :D'
+    return render_template('index.html')
 
 
-@app.route('/wake')
+@app.route('/wake',methods=['post'])
 def wake():
     wol.wake_on_lan()
-    return 'Send WOL packet!'
+    return 'WOL packet sent.'
 
 
 if __name__ == '__main__':

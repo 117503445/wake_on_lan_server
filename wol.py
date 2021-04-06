@@ -4,10 +4,10 @@ import json
 
 
 def wake_on_lan():
-    js = file_util.read_all_text('config.json')
-    js = json.loads(js)
+    js = json.loads(file_util.read_all_text('config.json'))
     mac = js['mac']
     broadcast = js['broadcast']
+    # print(mac,broadcast)
     send_magic_packet(mac, ip_address=broadcast)
 
 
