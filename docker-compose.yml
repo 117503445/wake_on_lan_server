@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  wol:
+    image: 117503445/wake_on_lan_server
+    container_name: wol
+    restart: unless-stopped
+    network_mode: "host"
